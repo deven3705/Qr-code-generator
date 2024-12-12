@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/128/747/747639.png">
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <script type="text/javascript">
+        function generateQR() {
+            var qrText = document.getElementById("qrtext").value;
+            var qrSize = document.getElementById("size").value;
+            var qrImage = document.getElementById("img");
+
+            if (qrText !== "") {
+                // Generate QR Code URL using GoQR API
+                var apiURL = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&data=${encodeURIComponent(qrText)}`;
+
+                // Set the image source to the generated URL
+                qrImage.src = apiURL;
+            } else {
+                alert("Please enter text to generate QR code");
+            }
+        }
+    </script>
+
+    <div class="grid">
+        <h2 align="center">QR Code Generator</h2>
+        <center>
+            <img src="" id="img">
+        </center>
+
+        <select id="size">
+            <option selected>Select Size</option>
+            <option value="150">150 X 150</option>
+            <option value="225">225 X 225</option>
+            <option value="300">300 X 300</option>
+        </select>
+        <br><br>
+        <textarea placeholder="Enter Your Text" id="qrtext"></textarea>
+        <br><br>
+        <input type="submit" value="Generate" onclick="generateQR()">
+    </div>
+</body>
+</html>
