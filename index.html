@@ -11,9 +11,9 @@
 <body>
     <script type="text/javascript">
         function generateQR() {
+            var qrImage = document.getElementById("img");
             var qrText = document.getElementById("qrtext").value;
             var qrSize = document.getElementById("size").value;
-            var qrImage = document.getElementById("img");
 
             if (qrText !== "") {
                 // Generate QR Code URL using GoQR API
